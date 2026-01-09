@@ -201,11 +201,11 @@ Ainsi, le choix de la température constitue un compromis entre cohérence et di
 ### 4.f
 Beam search num_beams=5:
 Setting `pad_token_id` to `eos_token_id`:50256 for open-end generation.
-The future of artificial intelligence is in the hands of the next generation of scientists and engineers.
+`The future of artificial intelligence is in the hands of the next generation of scientists and engineers.`
 
-The future of artificial intelligence is in the hands of the next generation of scientists and engineers.
+`The future of artificial intelligence is in the hands of the next generation of scientists and engineers.`
 
-The future of artificial intelligence is in the hands of
+The future of artificial intelligence is in the hands of`
 Temps approximatif: 3.88s
 
 Comparé au décodage glouton, le beam search produit un texte plus probable globalement. Le modèle prend en compte plusieurs séquences candidates simultanément et choisit la suite qui maximise la probabilité totale, ce qui tend à éviter certaines erreurs locales que greedy pourrait commettre. Cela se traduit par un texte grammaticalement correct, cohérent et plausible, mais un peu plus générique : on remarque moins de variations que lors du sampling, et le texte est moins diversifié.
@@ -213,20 +213,20 @@ Comparé au décodage glouton, le beam search produit un texte plus probable glo
 ### 4.g
 Beam search num_beams=10:
 Setting `pad_token_id` to `eos_token_id`:50256 for open-end generation.
-The future of artificial intelligence is in the hands of the next generation of scientists and engineers.
+`The future of artificial intelligence is in the hands of the next generation of scientists and engineers.`
 
-The future of artificial intelligence is in the hands of the next generation of scientists and engineers.
+`The future of artificial intelligence is in the hands of the next generation of scientists and engineers.`
 
-The future of artificial intelligence is in the hands of
+`The future of artificial intelligence is in the hands of`
 Temps approximatif: 5.51s
-------------------------------------------------------------
+
 Beam search num_beams=20:
 Setting `pad_token_id` to `eos_token_id`:50256 for open-end generation.
-The future of artificial intelligence is in the hands of the next generation of scientists and engineers.
+`The future of artificial intelligence is in the hands of the next generation of scientists and engineers.`
 
-The future of artificial intelligence is in the hands of the next generation of scientists and engineers.
+`The future of artificial intelligence is in the hands of the next generation of scientists and engineers.`
 
-The future of artificial intelligence is in the hands of
+`The future of artificial intelligence is in the hands of`
 Temps approximatif: 7.69s
 
 En augmentant le nombre de beams à 10 puis 20, le temps de génération a augmenté à 5,51s pour 10 beams et 7.69s pour 20 beams. L’augmentation du temps est due à la complexité combinatoire : à chaque pas de génération, le modèle doit maintenir et scorer plusieurs séquences candidates simultanément, explorer davantage de chemins et recalculer les probabilités pour chacune, ce qui multiplie le coût computationnel.
