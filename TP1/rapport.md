@@ -14,10 +14,10 @@
 
 ### Installation / activation de l’environnement
 
-```python -m venv venv
-source venv/Scripts/activate
-cd ./TP1
-pip install -r requirements.txt```
+`python -m venv venv`
+`source venv/Scripts/activate`
+`cd ./TP1`
+`pip install -r requirements.txt`
 
 
 ## Exercice 1 - Découverte du tokenizer GPT-2
