@@ -14,8 +14,7 @@
 
 ### Installation / activation de l’environnement
 
-```bash
-python -m venv venv
+```python -m venv venv
 source venv/Scripts/activate
 cd ./TP1
 pip install -r requirements.txt```
