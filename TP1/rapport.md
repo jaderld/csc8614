@@ -29,6 +29,8 @@ Tokens:
 
 Dans le tokenizer GPT-2, le symbole Ġ indique qu’un token est précédé d’un espace dans le texte original. GPT-2 ne traite pas explicitement les espaces comme des tokens séparés, mais les encode dans les sous-mots eux-mêmes. Cela permet au modèle de conserver l’information de segmentation entre les mots tout en utilisant un vocabulaire de sous-tokens. Ce mécanisme est typique des tokenizers BPE utilisés par les modèles de type GPT.
 
+![](img/tokens_token_ids.png)
+
 ### 1.b
 | Token (décodé) | ID | Remarque |
 |---------------|----|----------|
@@ -67,6 +69,7 @@ Le mot antidisestablishmentarianism, très long et rare, est découpé en de nom
 ## Exercice 2 - Analyse des embeddings positionnels dans GPT-2
 
 ### 2.a
+![](img/n_embds_positions.png)
 `Shape position embeddings: torch.Size([1024, 768])`
 
 La matrice des encodages positionnels a une shape (1024, 768).
@@ -75,13 +78,13 @@ Chaque ligne correspond à une position possible dans la séquence, et chaque co
 Le paramètre n_positions correspond à la longueur maximale du contexte que le modèle peut traiter. GPT-2 étant un modèle de langage causal, il ne peut conditionner sa prédiction que sur les n_positions derniers tokens. Toute séquence plus longue doit être tronquée ou découpée, ce qui limite la mémoire contextuelle du modèle.
 
 ### 2.b
-capture d’écran du HTML positions_50.html
+![](img/positions_50.png)
 
 La projection PCA des encodages positionnels pour les positions 0 à 50 montre une trajectoire relativement continue dans l’espace 2D. Les points correspondant aux positions successives sont proches les uns des autres, ce qui suggère une variation progressive des encodages avec la position. On observe peu de regroupements discrets, mais plutôt une structure lisse, indiquant que le modèle encode la notion de proximité positionnelle. Cela reflète le fait que des positions proches doivent produire des effets similaires dans le mécanisme d’attention.
 Les encodages positionnels vivent dans un espace de grande dimension (768). La PCA permet de projeter ces vecteurs en 2D tout en conservant au maximum la variance, rendant possible une visualisation interprétable de leur structure globale.
 
 ### 2.c
-capture d’écran de positions_200.html
+![](img/positions_200.png)
 
 Lorsque l’on étend la visualisation aux positions 0 à 200, la structure devient plus étalée et parfois moins lisible localement. Les premières positions restent relativement bien organisées, mais les positions plus éloignées occupent des régions plus larges de l’espace projeté. Cela suggère que le modèle apprend à différencier fortement les positions lointaines afin d’éviter les confusions dans de longues séquences. Une hypothèse est que GPT-2 encode la position de manière non périodique et non strictement linéaire, ce qui permet de préserver l’ordre tout en maximisant la capacité de représentation sur de longues distances.
 
@@ -149,7 +152,9 @@ Seed utilisé : 42
 Fixer le seed garantit que les résultats sont reproductibles. Les modèles génératifs utilisant sampling ou beam search contiennent des éléments aléatoires, et sans seed, les sorties changeraient à chaque exécution.
 
 ### 4.b
-Greedy decoding: The future of artificial intelligence is uncertain. "We're not sure what the future will look like," said Dr. Michael S. Schoenfeld, a professor of computer science at the University of California, Berkeley.
+![](img/greedy.png)
+
+Greedy decoding: `The future of artificial intelligence is uncertain. "We're not sure what the future will look like," said Dr. Michael S. Schoenfeld, a professor of computer science at the University of California, Berkeley.`
 
 On observe que les sorties sont toujours identiques pour un même seed. Le texte est cohérent et grammaticalement correct, et il n'y a pas de diversité : le modèle choisit toujours le token le plus probable à chaque étape.
 
@@ -178,6 +183,8 @@ Avec pénalité de répétition (repetition_penalty=2.0, seed=1, temp=0.7)
 Avec repetition_penalty=2.0, les répétitions directes de segments (“the future of artificial intelligence”) disparaissent. Le texte reste cohérent mais devient parfois un peu plus verbose. Certaines phrases deviennent légèrement plus complexes pour éviter de répéter les tokens, ce qui peut donner des constructions un peu moins naturelles.
 
 ### 4.e
+![](img/temp_variation.png)
+
 Température très basse (0.1)
 `The future of artificial intelligence is uncertain. But the future of artificial intelligence is not.`
 `The future of artificial intelligence is not.`
