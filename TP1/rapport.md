@@ -205,7 +205,7 @@ Setting `pad_token_id` to `eos_token_id`:50256 for open-end generation.
 
 `The future of artificial intelligence is in the hands of the next generation of scientists and engineers.`
 
-The future of artificial intelligence is in the hands of`
+`The future of artificial intelligence is in the hands of`
 Temps approximatif: 3.88s
 
 Comparé au décodage glouton, le beam search produit un texte plus probable globalement. Le modèle prend en compte plusieurs séquences candidates simultanément et choisit la suite qui maximise la probabilité totale, ce qui tend à éviter certaines erreurs locales que greedy pourrait commettre. Cela se traduit par un texte grammaticalement correct, cohérent et plausible, mais un peu plus générique : on remarque moins de variations que lors du sampling, et le texte est moins diversifié.
