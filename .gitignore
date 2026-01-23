@@ -36,3 +36,4 @@ Thumbs.db
 # Données volumineuses
 data/
 TP2/gpt2_weights/
+TP3/gpt2_weights/
