@@ -1,0 +1,2 @@
+{"run_id": "8f8d6fba-cda8-4932-b611-739d21d31e50", "ts": "2026-01-30T10:28:36.814264Z", "event": "node_start", "data": {"node": "classify_email", "email_id": "unknown"}}
+{"run_id": "8f8d6fba-cda8-4932-b611-739d21d31e50", "ts": "2026-01-30T10:29:41.195793Z", "event": "node_end", "data": {"node": "classify_email", "status": "ok", "decision": {"intent": "reply", "category": "admin", "priority": 3, "risk_level": "low", "needs_retrieval": true, "retrieval_query": "demande de certificat de scolarité", "rationale": "L'étudiant demande un document administratif."}}}
